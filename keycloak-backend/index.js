@@ -117,13 +117,18 @@ router.get("/", keycloak.protect(), (req, res) => {
 // Register routes
 app.use("/", router);
 app.use("/admin", AdminClientInit);
-app.use("/users", getAllUsersFromClient);
+app.use("/users", keycloak.protect(), validateToken, getAllUsersFromClient);
 app.use("/groups", getAllGroups);
 app.use("/createUser", createUser);
 app.use("/userManagementPermissions", getUserManagementPermission);
 app.use("/getProfileInfo", getProfile);
 app.use("/getUserRoleMappings", getRealmRoleMappings);
-app.use("/getRoleMappings/:id", getRoleMappings);
+app.use(
+  "/getRoleMappings/:id",
+  keycloak.protect(),
+  validateToken,
+  getRoleMappings
+);
 app.use("/getCompositeRoles", getCompositeRoles);
 app.use("/getResourceServer", getResourceServer);
 app.use("/getUserInfo", getUserInfo);
@@ -137,14 +142,8 @@ app.use("/getUserDetails", getUserCompleteDetails);
 app.use("/getRealmComposite", getRealmComposite);
 app.use("/logout", logoutSession);
 app.use("/updateFineGrainPermission", updateFineGrainPermission);
-app.use("/rptoken/:id", validateToken, getRPToken);
+app.use("/rptoken/:id", keycloak.protect(), validateToken, getRPToken);
 app.use("/getClientInfo", getClientInfo);
-
-// app.use(
-//   "/orderStatus/:scope",
-//   keycloak.enforcer(["orders:create", "orders:read"]),
-//   orderStatus
-// );
 
 app.use("/orderStatus", keycloak.enforcer(["orders:create"]), orderStatus);
 

@@ -13,6 +13,23 @@ export const KEYCLOAK_TOKEN_ENDPOINT =
 export const KEYCLOAK_USERINFO_TOKEN_ENDPOINT =
   "http://localhost:8080/realms/Aritha/protocol/openid-connect/userinfo";
 
+// Server
+
+// export const KEYCLOAK_REALM = "Aritha";
+// export const KEYCLOAK_FRONTEND_CLIENT = "Alumex-web";
+// export const KEYCLOAK_BACKEND_SECRET_KEY = "tKOidVddCoOio2blYdBZh1GW6NMstjLj";
+// export const KEYCLOAK_BACKEND_CLIENT = "Alumex";
+// export const KEYCLOAK_AUTH_SERVER_URL = "http://13.126.45.9:8080/";
+// export const KEYCLOAK_BASE_URL = "http://13.126.45.9:8080";
+// export const KEYCLOAK_ADMIN_USER = "admin";
+// export const KEYCLOAK_ADMIN_PASSWORD = "123";
+// export const KEYCLOAK_RPT_GRANT_TYPE =
+//   "urn:ietf:params:oauth:grant-type:uma-ticket";
+// export const KEYCLOAK_TOKEN_ENDPOINT =
+//   "http://13.126.45.9:8080/realms/Aritha/protocol/openid-connect/token";
+// export const KEYCLOAK_USERINFO_TOKEN_ENDPOINT =
+//   "http://13.126.45.9:8080/realms/Aritha/protocol/openid-connect/userinfo";
+
 // Demo-rbac
 
 // export const KEYCLOAK_REALM = "demo-rbac";

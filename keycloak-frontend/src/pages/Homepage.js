@@ -19,6 +19,9 @@ const HomePage = () => {
     user: false,
     accounts: false,
     emp: false,
+    order: false,
+    preprod: false,
+    qc: false,
   });
   const [permission, setPermissions] = useState([]);
 
@@ -152,6 +155,41 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+
+      <AuthrizedElement roles={["ROLE_ADMIN"]}>
+        <h3>You have ADMIN Access</h3>
+        <button onClick={() => getUsersList()}>Get Users</button>
+        <pre>{status ? JSON.stringify(usersList, undefined, 2) : ""}</pre>
+      </AuthrizedElement>
+
+      <AuthrizedElement roles={["ROLE_ORDER_MANAGER"]}>
+        <h3>You have Order Access</h3>
+        <button onClick={() => userRoleMapping("order")}>
+          Get Role Mappings
+        </button>
+        <pre>
+          {allStatus.order ? JSON.stringify(getRoleMappings, undefined, 2) : ""}
+        </pre>
+      </AuthrizedElement>
+
+      <AuthrizedElement roles={["ROLE_PRE_PRODUCTION_MANAGER"]}>
+        <h3>You have Pre Production Access</h3>
+        <button onClick={() => userRoleMapping("preprod")}>
+          Get Role Mappings
+        </button>
+        <pre>
+          {allStatus.preprod
+            ? JSON.stringify(getRoleMappings, undefined, 2)
+            : ""}
+        </pre>
+      </AuthrizedElement>
+      <AuthrizedElement roles={["ROLE_QUALITY_ANALYST"]}>
+        <h3>You have Quality Control Access</h3>
+        <button onClick={() => userRoleMapping("qc")}>Get Role Mappings</button>
+        <pre>
+          {allStatus.qc ? JSON.stringify(getRoleMappings, undefined, 2) : ""}
+        </pre>
+      </AuthrizedElement>
 
       {/* <button onClick={() => getCompleteData()}>Get Data</button> */}
       {initialized && permission.length !== 0 ? (

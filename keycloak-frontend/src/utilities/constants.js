@@ -21,3 +21,26 @@ export const clientRoles = [
 ];
 
 export const scopesList = ["create", "update", "read", "delete"];
+
+export const routesList = [
+  {
+    id: "/users",
+    pathName: "/users",
+    name: "Users Access",
+  },
+  {
+    id: "/role",
+    pathName: "/role",
+    name: "Roles",
+  },
+  {
+    id: "/resource",
+    pathName: "/resource",
+    name: "Resources",
+  },
+  {
+    id: "/profile",
+    pathName: "/profile",
+    name: "View Profile",
+  },
+];
